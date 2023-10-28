@@ -1,6 +1,6 @@
 # Be-New
 
-5846514 유경모 ykm7003@gmail.com 
+5846514 유경모 ykm7003@gmail.com <br>
 5598805 서세환 tgc03151@gmail.com  
 5532960 정세곤 tph03031@gmail.com  
 5584932 이승윤 tmddls0lek@gmail.com  
