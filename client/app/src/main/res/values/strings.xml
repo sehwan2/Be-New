@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Team_BeNew</string>
+    <string name="label_home_icon" >홈</string>
+    <string name="label_mypage_icon" >마이페이지</string>
+    <string name="label_matching_icon" >매칭</string>
+    <string name="label_myteam_icon" >나의 팀</string>
+    <string name="label_setting_icon" >설정</string>
+</resources>

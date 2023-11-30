@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_intro_pic"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:src="@drawable/intro_bg"
+        app:layout_constraintBottom_toBottomOf="@id/tv_intro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안녕하세요"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/iv_intro_pic"
+        app:layout_constraintStart_toStartOf="@id/iv_intro_pic"
+        app:layout_constraintTop_toBottomOf="@id/iv_intro_pic" />
+
+    <TextView
+        android:id="@+id/tv_intro_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="원하는 팀과 원하는 팀원을 찾아 매칭해보세요\n 그들과 함께 멋진 프로젝트를 진행해보세요!"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@id/tv_intro"
+        app:layout_constraintStart_toStartOf="@id/tv_intro"
+        app:layout_constraintTop_toBottomOf="@id/tv_intro" />
+
+    <Button
+        android:id="@+id/btn_intro_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:backgroundTint="@color/mainBlue"
+        app:layout_constraintTop_toBottomOf="@id/tv_intro_sub"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/tv_intro_sub"
+        />
+
+
+    <Button
+        android:id="@+id/btn_intro_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:backgroundTint="@color/mainBlue"
+        app:layout_constraintTop_toBottomOf="@id/tv_intro_sub"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/tv_intro_sub"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

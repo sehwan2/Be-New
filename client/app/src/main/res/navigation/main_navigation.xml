@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.gmlab.team_benew.main.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_home_to_profileDetail"
+            app:destination="@id/navigation_profile_deatil" />
+        <action
+            android:id="@+id/action_home_to_projectList"
+            app:destination="@id/navigation_project_list" />
+        <action
+            android:id="@+id/action_home_to_teamList"
+            app:destination="@id/navigation_team_list" />
+        <action
+            android:id="@+id/action_home_to_chatList"
+            app:destination="@id/navigation_chatList" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.gmlab.team_benew.main.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/navigation_myteampage"
+        android:name="com.gmlab.team_benew.main.MyteamListFragment"
+        android:label="MyteamListFragment" />
+    <fragment
+        android:id="@+id/navigation_mypage"
+        android:name="com.gmlab.team_benew.main.MypageFragment"
+        android:label="MypageFragment" />
+    <fragment
+        android:id="@+id/navigation_profile_deatil"
+        android:name="com.gmlab.team_benew.profile.ProfileDetailFragment"
+        android:label="ProfileDetailFragment" />
+    <fragment
+        android:id="@+id/navigation_project_list"
+        android:name="com.gmlab.team_benew.teamproject.ProjectListFragment"
+        android:label="ProjectListFragment" >
+        <action
+            android:id="@+id/action_projectList_to_projectDetail"
+            app:destination="@id/navigation_project_deatil" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_team_list"
+        android:name="com.gmlab.team_benew.teamproject.TeamListFragment"
+        android:label="TeamListFragment" >
+        <action
+            android:id="@+id/action_teamList_to_teamDetail"
+            app:destination="@id/navigation_team_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_project_deatil"
+        android:name="com.gmlab.team_benew.teamproject.ProjectDetailFragment"
+        android:label="ProjectDetailFragment" />
+    <fragment
+        android:id="@+id/navigation_team_detail"
+        android:name="com.gmlab.team_benew.teamproject.TeamDetailFragment"
+        android:label="TeamDetailFragment" />
+    <fragment
+        android:id="@+id/navigation_matching"
+        android:name="com.gmlab.team_benew.matching.MatchingFragment"
+        android:label="MatchingFragment" />
+    <fragment
+        android:id="@+id/navigation_intro_matching"
+        android:name="com.gmlab.team_benew.matching.MatchingIntroFragment"
+        android:label="MatchingIntroFragment" >
+        <action
+            android:id="@+id/action_intro_matching_to_navigation_matching"
+            app:destination="@id/navigation_matching" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_chatList"
+        android:name="com.gmlab.team_benew.chat.ChatListFragment"
+        android:label="ChatListFragment" >
+        <action
+            android:id="@+id/action_chatList_to_chat"
+            app:destination="@id/navigation_chat" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.gmlab.team_benew.chat.ChatFragment"
+        android:label="ChatFragment" />
+</navigation>
