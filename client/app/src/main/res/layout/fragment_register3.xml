@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/btn_register3_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/mainBlue"
+        android:text="가입"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup_register3_major" />
+
+    <android.widget.Button
+        android:id="@+id/btn_register3_birthday"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/lGreen"
+        android:gravity="start|center_vertical"
+        android:hint="생년월일"
+        android:padding="15dp"
+        app:hintTextColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26999998" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup_register3_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_register3_gender"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register3_birthday">
+
+        <RadioButton
+            android:id="@+id/radioButton_register3_Male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="남성" />
+
+        <RadioButton
+            android:id="@+id/radioButton_register3_Female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="여성"
+            android:textSize="14sp" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radiogroup_register3_major"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="@+id/radiogroup_register3_gender"
+        app:layout_constraintTop_toBottomOf="@+id/tv_register3_major">
+
+        <RadioButton
+            android:id="@+id/radioButton_register3_ture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="전공자" />
+
+        <RadioButton
+            android:id="@+id/radioButton_register3_false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비전공자" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_register3_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="성별"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/radiogroup_register3_gender"
+        app:layout_constraintEnd_toStartOf="@+id/radiogroup_register3_gender"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_register3_birthday"
+        app:layout_constraintTop_toTopOf="@+id/radiogroup_register3_gender" />
+
+    <TextView
+        android:id="@+id/tv_register3_major"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="컴퓨터관련 전공 여부"
+        app:layout_constraintStart_toStartOf="@+id/tv_register3_gender"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup_register3_gender" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

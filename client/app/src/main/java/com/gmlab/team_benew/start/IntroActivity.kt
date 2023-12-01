@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gmlab.team_benew.R
 import com.gmlab.team_benew.auth.LoginActivity
 import com.gmlab.team_benew.auth.SignUpActivity
+import com.gmlab.team_benew.auth.register.RegisterActivity
 import com.gmlab.team_benew.databinding.ActivityIntroBinding
 
 class IntroActivity:AppCompatActivity() {
@@ -24,7 +25,7 @@ class IntroActivity:AppCompatActivity() {
         }
 
         binding.btnIntroRegister.setOnClickListener{
-            val intent = Intent(this, SignUpActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 

@@ -11,6 +11,12 @@ data class User(
 data class RegisterUser(
     @SerializedName(value = "account") var id : String,
     @SerializedName(value = "password") var password : String,
-    @SerializedName(value = "name") var name : String
+    @SerializedName(value = "name") var name : String,
+    @SerializedName(value = "gender") var gender: String,
+    @SerializedName(value = "birthday") var birthday: String,
+    @SerializedName(value = "email") var email: String,
+    @SerializedName(value = "major") var major: String,
+    @SerializedName(value = "phoneNumber") var phoneNumber: String
+
 )
 

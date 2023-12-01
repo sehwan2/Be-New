@@ -31,12 +31,12 @@ class SignUpActivity: AppCompatActivity(), SignUpView {
         }
      }
 
-    private fun getRegisterUser() : RegisterUser {
-        val id : String = binding.tetSignupId.text.toString()
-        val pwd : String = binding.tetSignupPw.text.toString()
-        val name : String = binding.tetSignupName.text.toString()
-        return RegisterUser(id, pwd, name)
-    }
+//    private fun getRegisterUser() : RegisterUser {
+//        val id : String = binding.tetSignupId.text.toString()
+//        val pwd : String = binding.tetSignupPw.text.toString()
+//        val name : String = binding.tetSignupName.text.toString()
+//        return RegisterUser(id, pwd, name)
+//    }
 
     private fun signUp() {
         if (binding.tetSignupId.text.toString().isEmpty()) {
@@ -63,7 +63,7 @@ class SignUpActivity: AppCompatActivity(), SignUpView {
         val authService = AuthService()
         authService.setSignUpView(this)
 
-        authService.signUp(getRegisterUser())
+        //authService.signUp(getRegisterUser())
     }
 
     override fun onSignUpSuccess() {
