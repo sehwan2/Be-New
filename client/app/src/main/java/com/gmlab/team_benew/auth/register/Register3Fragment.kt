@@ -124,7 +124,6 @@ class Register3Fragment : Fragment(), SignUpView {
     }
 
     override fun onSignUpFailure() {
-
     }
 
 }

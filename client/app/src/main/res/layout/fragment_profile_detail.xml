@@ -1,15 +1,399 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="프로필상세페이지 CRUD"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profilecardDetail_middle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#F4F6FA"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="4dp"
+                app:layout_constraintBaseline_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/cv_profilecardDetail_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_profilecardDetail_top"
+                app:layout_constraintVertical_weight="2">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/view_profilecardDetail_stackbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="#000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_profilecardDetail_stack"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_stack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기술스택"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.09"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.060000002" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profilecardDetail_top"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardBackgroundColor="#E8E8FA"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/cv_profilecardDetail_middle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/et_profilecardDetail_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:gravity="start|center_vertical"
+                        android:hint="이메일"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@+id/imgb_profilecardDetail_picture"
+                        app:layout_constraintTop_toBottomOf="@+id/imgb_profilecardDetail_picture" />
+
+                    <EditText
+                        android:id="@+id/et_profilecardDetail_introduce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:gravity="start|center_vertical"
+                        android:hint="나의 다짐"
+                        android:inputType="text"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@+id/et_profilecardDetail_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/et_profilecardDetail_nickname" />
+
+                    <EditText
+                        android:id="@+id/et_profilecardDetail_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:gravity="start|center_vertical"
+                        android:hint="닉네임"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imgb_profilecardDetail_picture"
+                        app:layout_constraintTop_toTopOf="@+id/imgb_profilecardDetail_picture"
+                        app:layout_constraintVertical_bias="0.00999999" />
+
+                    <ImageButton
+                        android:id="@+id/imgb_profilecardDetail_picture"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/draw_profilecard_picture"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.16000003"
+                        app:srcCompat="@drawable/profilecard_detail_default" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_birthdayLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="생일"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_profilecardDetail_genderLabel"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profilecardDetail_gender"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profilecardDetail_genderLabel" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_genderLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="성별"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/et_profilecardDetail_email"
+                        app:layout_constraintTop_toBottomOf="@+id/et_profilecardDetail_email"
+                        app:layout_constraintVertical_bias="0.060000002" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:hint="empty"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_profilecardDetail_genderLabel"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profilecardDetail_genderLabel"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profilecardDetail_genderLabel"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:hint="empty"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_profilecardDetail_genderLabel"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profilecardDetail_birthdayLabel"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profilecardDetail_genderLabel" />
+
+                    <TextView
+                        android:id="@+id/tv_profileDetail_projectExperienceLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="프로젝트경험"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/et_profilecardDetail_role"
+                        app:layout_constraintTop_toBottomOf="@+id/et_profilecardDetail_role" />
+
+                    <Spinner
+                        android:id="@+id/spn_profilecardDetail_projectExperience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:entries="@array/profilecardDetail_projectExperience"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_profileDetail_projectExperienceLabel"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profileDetail_projectExperienceLabel"
+                        app:layout_constraintStart_toStartOf="@+id/tv_profileDetail_projectExperienceLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_profileDetail_projectExperienceLabel" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_role"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="84dp"
+                        android:text="역할"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profilecardDetail_majorLabel"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profilecardDetail_majorLabel" />
+
+                    <EditText
+                        android:id="@+id/et_profilecardDetail_role"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:gravity="start|center_vertical"
+                        android:hint="예)프론트엔드"
+                        android:inputType="text"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_profilecardDetail_role"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_profilecardDetail_role" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:hint="전화번호"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        app:layout_constraintStart_toStartOf="@+id/et_profilecardDetail_nickname"
+                        app:layout_constraintTop_toBottomOf="@+id/et_profilecardDetail_introduce" />
+
+                    <android.widget.Button
+                        android:id="@+id/btn_profilecardDetail_modify"
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@null"
+                        android:text="수정"
+                        android:textColor="#000000"
+                        app:layout_constraintBottom_toTopOf="@+id/et_profilecardDetail_nickname"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imgv_profiledetail_peer"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_profilecardDetail_major"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_profilecardDetail_major"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/profilecard_detail_peer40_59" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_majorLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="전공유무"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_profilecardDetail_genderLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_profilecardDetail_gender" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_major"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/draw_profilecard_detail_textbox"
+                        android:gravity="start|center_vertical"
+                        android:hint="empty"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_profilecardDetail_role"
+                        app:layout_constraintStart_toStartOf="@+id/tv_profilecardDetail_majorLabel" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profilecardDetail_bottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardBackgroundColor="#F4F6FA"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_profilecardDetail_middle"
+                app:layout_constraintVertical_weight="2">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_profilecardDetail_link"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="https/...."
+                        android:inputType="textMultiLine"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/view_profilecardDetail_linkbar"
+                        app:layout_constraintStart_toStartOf="@+id/view_profilecardDetail_linkbar"
+                        app:layout_constraintTop_toBottomOf="@+id/view_profilecardDetail_linkbar" />
+
+                    <TextView
+                        android:id="@+id/tv_profilecardDetail_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="링크"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.09"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.060000002" />
+
+                    <View
+                        android:id="@+id/view_profilecardDetail_linkbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="#000000"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_profilecardDetail_link" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="이동 ->"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_profilecardDetail_link"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profilecardDetail_link"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profilecardDetail_link" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
