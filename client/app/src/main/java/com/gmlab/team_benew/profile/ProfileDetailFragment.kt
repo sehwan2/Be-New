@@ -10,6 +10,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -47,6 +48,9 @@ class ProfileDetailFragment: Fragment() {
     private lateinit var btn_addSkill : Button
 
     private lateinit var linear_skill : LinearLayout
+
+    private lateinit var skillSpinner : Spinner
+    private lateinit var LevelSpinner : Spinner
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -97,6 +101,18 @@ class ProfileDetailFragment: Fragment() {
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(intent, 1)
+        }
+
+        btn_addSkill.setOnClickListener {
+            if(btn_addSkill.text.toString() == "추가")
+            {
+                btn_addSkill.text = "완료"
+                skillAdd()
+            }
+            else {
+                btn_addSkill.text = "추가"
+                skillFinish()
+            }
         }
 
         btn_modify.setOnClickListener {
@@ -204,6 +220,7 @@ class ProfileDetailFragment: Fragment() {
                         val personalLink = it.personalLink ?: ""
                         val projectExperience = it.projectExperience ?: false
                         val role = it.role ?: ""
+                        val peer = it.peer ?: 50
 
                         val birthday = it.member?.birthday ?: ""
                         val email = it.member?.email ?: ""
@@ -333,5 +350,33 @@ class ProfileDetailFragment: Fragment() {
         et_email.isEnabled = true
 
         cv_bottom.isEnabled = false
+    }
+
+    private fun skillAdd(){
+
+        skillSpinner = Spinner(requireContext())
+        LevelSpinner = Spinner(requireContext())
+
+        val items = arrayOf("JAVA", "Python")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        skillSpinner.adapter = adapter
+        linear_skill.addView(skillSpinner)
+
+        val level_items = arrayOf("level1", "level2", "level3", "level4", "level5")
+        val level_adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, level_items)
+        level_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        LevelSpinner.adapter = level_adapter
+
+        linear_skill.addView(LevelSpinner)
+    }
+
+    private fun skillFinish() {
+        var skill_value = skillSpinner.selectedItem.toString()
+        var level_value = LevelSpinner.selectedItem.toString()
+
+
+        linear_skill.removeView(skillSpinner)
+        linear_skill.removeView(LevelSpinner)
     }
 }

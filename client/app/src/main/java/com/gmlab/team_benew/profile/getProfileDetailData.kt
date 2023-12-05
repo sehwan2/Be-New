@@ -16,7 +16,9 @@ data class getProfileDetailData(
     @SerializedName("role")
     val role: String,
     @SerializedName("photo")
-    val photo: String
+    val photo: String,
+    @SerializedName("peer")
+    val peer: Int
 )
 
 data class Member(
