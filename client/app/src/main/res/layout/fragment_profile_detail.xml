@@ -52,11 +52,9 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="20dp"
                         android:background="#000000"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_profilecardDetail_stack"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_profilecardDetail_stack" />
 
                     <TextView
                         android:id="@+id/tv_profilecardDetail_stack"
@@ -64,12 +62,34 @@
                         android:layout_height="wrap_content"
                         android:text="기술스택"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.09"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.060000002" />
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/linear_profilecarddetail_skill"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_profilecardDetail_stackbar"></LinearLayout>
+
+                    <android.widget.Button
+                        android:id="@+id/btn_profilecard_addskill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="추가"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_profilecardDetail_stack"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profilecardDetail_stack" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -142,8 +162,8 @@
 
                     <ImageButton
                         android:id="@+id/imgb_profilecardDetail_picture"
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
                         android:layout_marginStart="24dp"
                         android:adjustViewBounds="true"
                         android:background="@drawable/draw_profilecard_picture"
@@ -352,8 +372,10 @@
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/view_profilecardDetail_linkbar"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/view_profilecardDetail_linkbar"
-                        app:layout_constraintTop_toBottomOf="@+id/view_profilecardDetail_linkbar" />
+                        app:layout_constraintTop_toBottomOf="@+id/view_profilecardDetail_linkbar"
+                        app:layout_constraintVertical_bias="1.0" />
 
                     <TextView
                         android:id="@+id/tv_profilecardDetail_link"

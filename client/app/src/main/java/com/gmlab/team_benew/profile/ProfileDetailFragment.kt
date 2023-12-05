@@ -6,15 +6,19 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -40,6 +44,9 @@ class ProfileDetailFragment: Fragment() {
     private lateinit var et_link : EditText
     private lateinit var tv_phone : TextView
     private lateinit var tv_major : TextView
+    private lateinit var btn_addSkill : Button
+
+    private lateinit var linear_skill : LinearLayout
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -67,6 +74,8 @@ class ProfileDetailFragment: Fragment() {
         et_link = view.findViewById(R.id.et_profilecardDetail_link)
         tv_phone = view.findViewById(R.id.tv_profilecardDetail_phone)
         tv_major = view.findViewById(R.id.tv_profilecardDetail_major)
+        linear_skill = view.findViewById(R.id.linear_profilecarddetail_skill)
+        btn_addSkill = view.findViewById(R.id.btn_profilecard_addskill)
 
         imgb_picture.clipToOutline = true
         imgb_picture.visibility = View.VISIBLE
@@ -75,9 +84,13 @@ class ProfileDetailFragment: Fragment() {
 
         if (memberId != null) {
             if (token != null) {
-                getProfileToServer(token, memberId)
+                if(account != null) {
+                    getProfileToServer(token, memberId)
+                    getTechnology(token, account)
+                }
             }
         }
+
 
         imgb_picture.setOnClickListener {
             val intent = Intent()
@@ -125,7 +138,6 @@ class ProfileDetailFragment: Fragment() {
         var nickname = et_nickname.text.toString()
         var role = et_role.text.toString()
         var personalLink = et_link.text.toString()
-
 //      스피너 처리
         var projectExperience_value = spn_experience.selectedItem.toString()
         var projectExperience : Boolean
@@ -142,7 +154,7 @@ class ProfileDetailFragment: Fragment() {
         }
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-3-39-251-72.ap-northeast-2.compute.amazonaws.com/")
+            .baseUrl("http://15.164.217.105:32000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -174,7 +186,7 @@ class ProfileDetailFragment: Fragment() {
         }
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-3-39-251-72.ap-northeast-2.compute.amazonaws.com/")
+            .baseUrl("http://15.164.217.105:32000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -233,11 +245,57 @@ class ProfileDetailFragment: Fragment() {
 
     }
 
+    private fun getTechnology(token : String, account : String)
+    {
+        if (account == null) {
+            return
+        }
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://15.164.217.105:32000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiService = retrofit.create(getTechnologyRequest::class.java)
+
+        val call: Call<List<getTechnologyData>> = apiService.getTechnology("Bearer $token", account)
+
+        call?.enqueue(object : Callback<List<getTechnologyData>> {
+            override fun onResponse(call: Call<List<getTechnologyData>>, response: Response<List<getTechnologyData>>) {
+                if (response.isSuccessful) {
+                    val technologyDataList: List<getTechnologyData>? = response.body()
+                    technologyDataList?.let {
+                        for (technologyData in it) {
+                            val id = technologyData.id
+                            val level = technologyData.level ?: 0
+                            val name = technologyData.technology?.name ?: ""
+
+                            val textView = TextView(requireContext())
+                            textView.text = "$name level : $level"
+                            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
+
+                            // 생성된 TextView를 LinearLayout에 추가
+                            linear_skill.addView(textView)
+                        }
+                    }
+                } else {
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<List<getTechnologyData>>, t: Throwable) {
+                // Handle failure
+            }
+        })
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK && data != null){
             val selectedImage : Uri? = data.data
             imgb_picture.setImageURI(selectedImage)
+
+            imgb_picture.scaleType = ImageView.ScaleType.FIT_CENTER
         }
     }
 

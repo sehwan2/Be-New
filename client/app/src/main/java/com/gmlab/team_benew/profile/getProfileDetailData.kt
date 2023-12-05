@@ -14,7 +14,9 @@ data class getProfileDetailData(
     @SerializedName("projectExperience")
     val projectExperience: Boolean,
     @SerializedName("role")
-    val role: String
+    val role: String,
+    @SerializedName("photo")
+    val photo: String
 )
 
 data class Member(
