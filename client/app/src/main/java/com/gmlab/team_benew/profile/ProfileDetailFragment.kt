@@ -46,6 +46,7 @@ class ProfileDetailFragment: Fragment() {
     private lateinit var tv_phone : TextView
     private lateinit var tv_major : TextView
     private lateinit var btn_addSkill : Button
+    private lateinit var img_peer : ImageView
 
     private lateinit var linear_skill : LinearLayout
 
@@ -80,6 +81,7 @@ class ProfileDetailFragment: Fragment() {
         tv_major = view.findViewById(R.id.tv_profilecardDetail_major)
         linear_skill = view.findViewById(R.id.linear_profilecarddetail_skill)
         btn_addSkill = view.findViewById(R.id.btn_profilecard_addskill)
+        img_peer = view.findViewById(R.id.imgv_profiledetail_peer)
 
         imgb_picture.clipToOutline = true
         imgb_picture.visibility = View.VISIBLE
@@ -142,10 +144,16 @@ class ProfileDetailFragment: Fragment() {
     }
 
     private fun handleLinkClick(){
-        val link = et_link.text.toString()
+        try {
+            val link = et_link.text.toString()
 
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        startActivity(intent)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+            startActivity(intent)
+        }
+        catch(e : Exception)
+        {
+
+        }
     }
 
     private fun postProfileToServer(token : String, memberId : Int){
@@ -248,6 +256,19 @@ class ProfileDetailFragment: Fragment() {
                         {
                             spn_experience.setSelection(1)
                         }
+
+                        var drawableResource = resources.getDrawable(R.drawable.profilecard_detail_peer0_19, null)
+
+                        when(peer)
+                        {
+                            in 0..19 -> drawableResource = resources.getDrawable(R.drawable.profilecard_detail_peer0_19, null)
+                            in 20..39 ->drawableResource = resources.getDrawable(R.drawable.profilecard_detail_peer20_39, null)
+                            in 40..59 ->drawableResource = resources.getDrawable(R.drawable.profilecard_detail_peer40_59, null)
+                            in 60..79 ->drawableResource = resources.getDrawable(R.drawable.profilecard_detail_peer60_79, null)
+                            in 80..100 ->drawableResource = resources.getDrawable(R.drawable.profilecard_detail_peer80_100, null)
+                        }
+
+                        img_peer.setImageDrawable(drawableResource)
 
                     }
                 }
@@ -374,6 +395,7 @@ class ProfileDetailFragment: Fragment() {
     private fun skillFinish() {
         var skill_value = skillSpinner.selectedItem.toString()
         var level_value = LevelSpinner.selectedItem.toString()
+
 
 
         linear_skill.removeView(skillSpinner)
